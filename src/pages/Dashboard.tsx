@@ -1,6 +1,5 @@
 import {
   Card,
-  CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
@@ -9,7 +8,7 @@ import { useUserStore } from "@/stores/user-store";
 import { Separator } from "@/components/ui/separator";
 import { useBookmarkStore } from "@/stores/bookmark-store";
 import { Button } from "@/components/ui/button";
-import { Star, Bookmark } from "lucide-react";
+import { Bookmark } from "lucide-react";
 import {
   Empty,
   EmptyHeader,
@@ -19,13 +18,12 @@ import {
   EmptyContent,
 } from "@/components/ui/empty";
 import { useUIStore } from "@/stores/ui-store";
-import { Badge } from "@/components/ui/badge";
+import BookmarkCard from "@/components/shared/BookmarkCard";
 
 function Dashboard() {
   const user = useUserStore((state) => state.user);
   const bookmarks = useBookmarkStore((state) => state.bookmarks);
   const tags = [...new Set(bookmarks.flatMap((bookmark) => bookmark.tags))];
-  const toggleFavorite = useBookmarkStore((state) => state.toggleFavorite);
   const openBookmarkDialog = useUIStore((state) => state.openAddBookmark);
   return (
     <div className="p-4">
@@ -65,45 +63,7 @@ function Dashboard() {
             .slice(-5)
             .reverse()
             .map((b) => (
-              <Card key={b.id}>
-                <CardHeader>
-                  <div className="flex items-start justify-between gap-4">
-                    <div>
-                      <CardTitle>{b.title}</CardTitle>
-                      <CardDescription>{b.description}</CardDescription>
-                    </div>
-
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => toggleFavorite(b.id)}
-                    >
-                      <Star
-                        className={
-                          b.favorite ? "fill-yellow-400 text-yellow-400" : ""
-                        }
-                      />
-                    </Button>
-                  </div>
-                </CardHeader>
-                <CardContent>
-                  <a
-                    href={b.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                  >
-                    {b.url}
-                  </a>
-                  <div className="flex p-2 gap-2">
-                    {b.tags.map((t) => (
-                      <Badge variant="default" key={t}>
-                        #{t}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+              <BookmarkCard key={b.id} bookmark={b} />
             ))
         ) : (
           <Empty>
