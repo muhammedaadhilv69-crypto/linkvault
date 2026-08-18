@@ -13,8 +13,6 @@ import { NavLink } from "react-router-dom";
 
 import { useUIStore } from "@/stores/ui-store";
 
-import { Button } from "@/components/ui/button";
-
 import {
   Sidebar,
   SidebarContent,
@@ -151,9 +149,9 @@ export function AppSidebar() {
           <SidebarGroupContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton>
+                <SidebarMenuButton onClick={openBookmarkDialog}>
                   <Plus />
-                  <Button variant="ghost" onClick={openBookmarkDialog}>New Folder</Button>
+                  <span>New Bookmark</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>

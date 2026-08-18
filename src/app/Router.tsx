@@ -5,6 +5,7 @@ import DashboardLayout from "@/layouts/DashboardLayout";
 import Settings from "@/pages/Settings";
 import Resources from "@/pages/Resources"
 import Favorites from "@/pages/Favorites";
+import Search from "@/pages/Search";
 
 export default function Router() {
   return (
@@ -12,7 +13,7 @@ export default function Router() {
       <Route element={<DashboardLayout />}>
         <Route path="/" element={<Dashboard />} />
         <Route path="/resources" element={<Resources />}/>
-        <Route path="/search" />
+        <Route path="/search" element={<Search />}/>
         <Route path="/favorites" element={<Favorites />}/>
         <Route path="/folders" />
         {/* <Route path="/folders/:folderId" /> */}
