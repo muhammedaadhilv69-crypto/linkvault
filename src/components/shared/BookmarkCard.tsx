@@ -30,11 +30,11 @@ function BookmarkCard({bookmark}: {bookmark: Bookmark}) {
     <Card>
       <CardHeader>
         <div className="flex items-start justify-between gap-4">
-          <div>
-            <CardTitle>{b.title}</CardTitle>
+          <div className="min-w-0 flex-1">
+            <CardTitle className="wrap-break-word">{b.title}</CardTitle>
             <CardDescription>{b.description}</CardDescription>
           </div>
-          <div className="flex gap-1 items-center">
+          <div className="flex shrink-0 gap-1 items-center">
             <Button
               variant="ghost"
               size="icon"
@@ -45,10 +45,8 @@ function BookmarkCard({bookmark}: {bookmark: Bookmark}) {
               />
             </Button>
             <AlertDialog>
-              <AlertDialogTrigger>
-                <Button variant="destructive" size="icon">
+              <AlertDialogTrigger render={<Button variant="destructive" size="icon" />}>
                   <Trash2 />
-                </Button>
               </AlertDialogTrigger>
 
               <AlertDialogContent>
@@ -81,11 +79,11 @@ function BookmarkCard({bookmark}: {bookmark: Bookmark}) {
           href={b.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="hover:underline"
+          className="break-all hover:underline"
         >
           {b.url}
         </a>
-        <div className="flex p-2 gap-2">
+        <div className="flex flex-wrap p-2 gap-2">
           {b.tags.map((t: string) => (
             <Badge variant="default" key={t}>
               #{t}

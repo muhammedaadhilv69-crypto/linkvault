@@ -26,14 +26,16 @@ function Dashboard() {
   const tags = [...new Set(bookmarks.flatMap((bookmark) => bookmark.tags))];
   const openBookmarkDialog = useUIStore((state) => state.openAddBookmark);
   return (
-    <div className="p-4">
-      <div className="flex flex-col p-4">
-        <h1 className="text-2xl">Welcome back, {user.name}!</h1>
+    <div className="p-4 sm:p-6">
+      <div className="px-1 py-2 sm:px-2 sm:py-4">
+        <h1 className="text-xl font-semibold sm:text-2xl">
+          Welcome back, {user.name}!
+        </h1>
         <p className="text-gray-600 text-sm">
           Your resources, all in one place.
         </p>
       </div>
-      <div className="analytics flex gap-6 w-full">
+      <div className="analytics grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-6 ">
         <Card className="w-full">
           <CardHeader>
             <CardDescription>Bookmarks</CardDescription>
@@ -57,14 +59,12 @@ function Dashboard() {
         <Separator />
       </div>
       <div className="recents flex flex-col gap-4">
-        <p className="text-2xl">Recently Added</p>
+        <h2 className="text-xl font-semibold sm:text-2xl">Recently Added</h2>
         {bookmarks.length > 0 ? (
           bookmarks
             .slice(-5)
             .reverse()
-            .map((b) => (
-              <BookmarkCard key={b.id} bookmark={b} />
-            ))
+            .map((b) => <BookmarkCard key={b.id} bookmark={b} />)
         ) : (
           <Empty>
             <EmptyHeader>

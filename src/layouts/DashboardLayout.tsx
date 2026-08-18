@@ -6,7 +6,7 @@ import { useUserStore } from "@/stores/user-store";
 import AddBookmarkDialog from "@/components/shared/AddBookmarkDialog";
 
 export default function DashboardLayout() {
-  const {avatarUrl} = useUserStore((state) => state.user)
+  const avatarUrl = useUserStore((state) => state.user.avatarUrl)
   
 
   return (
@@ -16,9 +16,9 @@ export default function DashboardLayout() {
       <SidebarInset>
         <DashboardHeader avatarUrl={avatarUrl} />
 
-        <main className="flex-1 p-1">
+        <div className="flex-1 p-1">
           <Outlet />
-        </main>
+        </div>
 
         <AddBookmarkDialog />
       </SidebarInset>

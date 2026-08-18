@@ -24,21 +24,23 @@ function DashboardHeader({ avatarUrl }: { avatarUrl: string }) {
     navigate(`/search?q=${encodeURIComponent(trimmedQuery)}`);
   };
   return (
-    <header className="flex h-16 items-center justify-center px-2 mt-2 gap-2 w-full">
+    <header className="flex min-h-16 w-full items-center gap-2 px-2 sm:px-4">
       <SidebarTrigger />
-      <nav className="flex flex-1 p-2 gap-4 justify-between border-2 rounded-2xl items-center w-full">
-        <div className="flex gap-2">
-          <Logo /> LinkVault
+      <nav className="flex min-w-0 flex-1 items-center justify-between gap-2 rounded-2xl border-2 p-2 sm:gap-4">
+        <div className="flex shrink-0 items-center gap-2">
+          <Logo />
+          <span className="hidden sm:inline">LinkVault</span>
         </div>
 
-        <div className="flex gap-4">
+        <div className="flex min-w-0 flex-1 items-center justify-center gap-4">
           <form
             onSubmit={(e) => {
               e.preventDefault();
               handleSearch();
             }}
+            className="min-w-0 flex-1 sm:flex-none"
           >
-            <InputGroup className="w-96">
+            <InputGroup className="w-full sm:w-72 lg:w-96">
               <InputGroupAddon>
                 <Search />
               </InputGroupAddon>
@@ -48,16 +50,25 @@ function DashboardHeader({ avatarUrl }: { avatarUrl: string }) {
                 onChange={(e) => setQuery(e.target.value)}
               />
               <InputGroupAddon align="inline-end">
-                <Button type="submit" variant="ghost">
+                <Button
+                  type="submit"
+                  variant="ghost"
+                  className="hidden sm:inline-flex"
+                >
                   Search
                 </Button>
               </InputGroupAddon>
             </InputGroup>
           </form>
-          <Button onClick={openBookmarkDialog}>+ Add</Button>
+          <Button
+            onClick={openBookmarkDialog}
+            className="hidden sm:inline-flex"
+          >
+            + Add
+          </Button>
         </div>
 
-        <Avatar>
+        <Avatar className="shrink-0">
           <AvatarImage src={avatarUrl} />
           <AvatarFallback>
             <User />

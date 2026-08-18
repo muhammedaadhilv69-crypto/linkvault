@@ -51,7 +51,7 @@ function AddBookmarkDialog() {
         }
       }}
     >
-      <DialogContent>
+      <DialogContent className="w-[calc(100%-2rem)] sm:max-w-lg">
         <DialogHeader>
           <DialogTitle>Add Bookmark</DialogTitle>
           <DialogDescription>
@@ -59,7 +59,10 @@ function AddBookmarkDialog() {
           </DialogDescription>
         </DialogHeader>
 
-        <form className="flex flex-col gap-5" onSubmit={form.handleSubmit(onSubmit)}>
+        <form
+          className="flex flex-col gap-5"
+          onSubmit={form.handleSubmit(onSubmit)}
+        >
           <Field>
             <FieldLabel>Title</FieldLabel>
 
@@ -124,7 +127,7 @@ function AddBookmarkDialog() {
 
             <FieldDescription>Separate tags with commas.</FieldDescription>
           </Field>
-          <Button type="submit">Add Bookmark</Button>
+          <Button type="submit" className="w-full sm:w-auto">Add Bookmark</Button>
         </form>
       </DialogContent>
     </Dialog>

@@ -96,7 +96,6 @@ export function AppSidebar() {
             <SidebarMenu>
               {mainNavigation.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton>
                     <NavLink
                       to={item.url}
                       end={item.url === "/"}
@@ -109,7 +108,6 @@ export function AppSidebar() {
                         </SidebarMenuButton>
                       )}
                     </NavLink>
-                  </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
@@ -124,7 +122,6 @@ export function AppSidebar() {
             <SidebarMenu>
               {libraryNavigation.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton>
                     <NavLink
                       to={item.url}
                       end={item.url === "/"}
@@ -137,7 +134,6 @@ export function AppSidebar() {
                         </SidebarMenuButton>
                       )}
                     </NavLink>
-                  </SidebarMenuButton>
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
@@ -163,7 +159,6 @@ export function AppSidebar() {
       <SidebarFooter>
         <SidebarMenu>
           <SidebarMenuItem>
-            <SidebarMenuButton>
               <NavLink to="/settings" end className="w-full">
                 {({ isActive }) => (
                   <SidebarMenuButton isActive={isActive}>
@@ -172,7 +167,6 @@ export function AppSidebar() {
                   </SidebarMenuButton>
                 )}
               </NavLink>
-            </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
       </SidebarFooter>
