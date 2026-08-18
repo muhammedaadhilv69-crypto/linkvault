@@ -24,10 +24,10 @@ function DashboardHeader({ avatarUrl }: { avatarUrl: string }) {
     navigate(`/search?q=${encodeURIComponent(trimmedQuery)}`);
   };
   return (
-    <header className="flex min-h-16 w-full items-center gap-2 px-2 sm:px-4">
-      <SidebarTrigger />
+    <header className="flex min-h-16 w-full items-center px-2 sm:px-4">
       <nav className="flex min-w-0 flex-1 items-center justify-between gap-2 rounded-2xl border-2 p-2 sm:gap-4">
         <div className="flex shrink-0 items-center gap-2">
+          <SidebarTrigger />
           <Logo />
           <span className="hidden sm:inline">LinkVault</span>
         </div>
